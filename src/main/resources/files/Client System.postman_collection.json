@@ -6,13 +6,68 @@
 	},
 	"item": [
 		{
-			"name": "person",
+			"name": "Generate Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"leandro\",\n    \"password\": \"admin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return all client",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZWFuZHJvIiwicm9sZXMiOlsiQURNSU4iLCJNQU5BR0VSIl0sImlhdCI6MTYxMzEwMzYwNiwiZXhwIjoxNjEzMTA3MjA2fQ.kCWUTYkmzN-hgVj9qdnrgQu28_4exnWRRnlkNycey_g",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -39,7 +94,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/api/client/v1/findClientByName/Marcio",
+			"name": "Return a Client by Name",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -48,8 +103,8 @@
 				"header": [
 					{
 						"key": "name",
-						"value": "mini",
-						"type": "text"
+						"type": "text",
+						"value": "mini"
 					}
 				],
 				"body": {
@@ -79,7 +134,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/api/client/v1/",
+			"name": "Create a new Client",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -109,7 +164,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/api/client/v1/",
+			"name": "Update a Client",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -139,7 +194,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/api/client/v1/1",
+			"name": "Delete a Client",
 			"request": {
 				"method": "DELETE",
 				"header": [],
