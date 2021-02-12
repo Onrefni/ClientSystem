@@ -11,11 +11,11 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import br.com.rbf.exception.ExceptionResponse;
+import br.com.rbf.exception.InvalidJwtAuthenticationException;
 import br.com.rbf.exception.ResourceNotFoundException;
 
-
 /**
- * Class for customized response entity exception Handler
+ * Class to handle and customize exception messages
  * 
  * @author Rommel Fonseca
  *
@@ -25,11 +25,11 @@ import br.com.rbf.exception.ResourceNotFoundException;
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
 	/**
-	 * Create a new ResponseEntity with the given body and status code, and no headers.
+	 * Handles something that went wrong on the server
 	 * 
 	 * @param ex
 	 * @param request
-	 * @return {@link ResponseEntity}
+	 * @return Internal Server Error(500) for a resource not being found.
 	 */
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception ex, WebRequest request) {
@@ -38,19 +38,26 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-//	@ExceptionHandler(InvalidJwtAuthenticationException.class)
-//	public final ResponseEntity<ExceptionResponse> invalidJwtAuthenticationException(Exception ex, WebRequest request) {
-//		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
-//				request.getDescription(false));
-//		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
-//	}
-
 	/**
-	 * Create a new ResponseEntity with the given body and status code, and no headers.
+	 * Handles problem of the authentication. 
 	 * 
 	 * @param ex
 	 * @param request
-	 * @return {@link ResponseEntity}
+	 * @return BAD_REQUEST(404) for a resource not being found.
+	 */
+	@ExceptionHandler(InvalidJwtAuthenticationException.class)
+	public final ResponseEntity<ExceptionResponse> invalidJwtAuthenticationException(Exception ex, WebRequest request) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}
+
+	/**
+	 * Handles exceptions when the resource is not found
+	 * 
+	 * @param ex
+	 * @param request
+	 * @return BAD_REQUEST(404) for a resource not being found.
 	 */
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(Exception ex, WebRequest request) {
