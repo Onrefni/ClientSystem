@@ -19,7 +19,7 @@ import br.com.rbf.vo.v1.ClientVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags = "PersonEndpoint")
+@Api(tags = "ClientEndpoint")
 @RestController
 @RequestMapping("/api/client/v1")
 public class ClientController {
@@ -27,7 +27,7 @@ public class ClientController {
 	@Autowired
 	private ClientServices services;
 
-	@ApiOperation(value = "Find aAll clients")
+	@ApiOperation(value = "Find All clients")
 	@GetMapping(produces = { "application/json", "application/xml" })
 	public ResponseEntity<?> findAll() {
 

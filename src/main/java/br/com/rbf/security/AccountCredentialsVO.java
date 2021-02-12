@@ -2,6 +2,12 @@ package br.com.rbf.security;
 
 import java.io.Serializable;
 
+/**
+ * Class Value Object of Credentials
+ * 
+ * @author Rommel Fonseca
+ *
+ */
 public class AccountCredentialsVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;

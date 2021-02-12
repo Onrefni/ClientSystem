@@ -13,6 +13,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
+/**
+ * @author Rommel Fonseca
+ *
+ */
 public class JwtTokenFilter extends GenericFilterBean {
 
 	@Autowired

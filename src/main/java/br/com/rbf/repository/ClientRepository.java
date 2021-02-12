@@ -7,6 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import br.com.rbf.model.Client;
 
+/**
+ * Repository of the Clients
+ * 
+ * @author Rommel Fonseca
+ *
+ */
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long>{
 	

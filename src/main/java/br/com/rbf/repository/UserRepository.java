@@ -5,6 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import br.com.rbf.model.User;
 
+/**
+ * Repository of the users
+ * 
+ * @author Rommel Fonseca
+ *
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	
